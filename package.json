@@ -1,6 +1,6 @@
 {
   "name": "osm-tile-list",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Create list of OSM tiles for geojson polygons.",
   "main": "osm-tile-list.js",
   "scripts": {
