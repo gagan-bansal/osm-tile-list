@@ -1,9 +1,9 @@
-# osm-tile-set
+# osm-tile-list
 Create list of OSM tiles for geojson polygons
 ## installation
 
 ```
-npm install osm-tile-set -g
+npm install osm-tile-list -g
 ```
 
 ## usage
