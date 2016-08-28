@@ -9,26 +9,26 @@ var path = require('path')
 var argv = require('yargs')
   .usage('Usage:$0 <geojson-file> [options]')
   .demand(1)
-  .option('minZoom', {
-    alias: 's',
+  .option('s', {
+    alias: 'minZoom',
     describe: 'Min zoom to be considered for list',
     type: 'number',
     default: 0
   })
-  .option('maxZoom', {
-    alias: 'e',
+  .option('e', {
+    alias: 'maxZoom',
     describe: 'Max zoom to be considered for list',
     type: 'number',
     default: 18
   })
-  .option('tileBuffer', {
+  .option('b', {
     describe: 'Extra number of tiles around polygon',
-    alias: 'b',
+    alias: 'tileBuffer',
     type: 'number',
     default: 0
   })
-  .help('help')
-  .alias('help', 'h')
+  .help('h')
+  .alias('h', 'help')
   .argv
 
 fs.readFile(path.resolve(argv._[0]), function(err, data) {
