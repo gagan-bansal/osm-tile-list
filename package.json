@@ -1,6 +1,6 @@
 {
   "name": "osm-tile-list",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Create list of OSM tiles for geojson polygons.",
   "main": "osm-tile-list.js",
   "scripts": {
@@ -26,8 +26,7 @@
     "url": "https://github.com/gagan-bansal/osm-tile-list/issues"
   },
   "homepage": "https://github.com/gagan-bansal/osm-tile-list",
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "dependencies": {
     "geojson-bbox": "0.0.0",
     "geojson-extract-geometries": "0.0.2",
