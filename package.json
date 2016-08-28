@@ -1,0 +1,43 @@
+{
+  "name": "osm-tile-list",
+  "version": "0.0.0",
+  "description": "Create list of OSM tiles for geojson polygons.",
+  "main": "osm-tile-list.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "osm-tile-list": "osm-tile-list.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gagan-bansal/osm-tile-list"
+  },
+  "keywords": [
+    "OSM",
+    "tile list",
+    "tiles",
+    "geojson",
+    "openstreetmap"
+  ],
+  "author": "Gagan Bansal <gaganbansal123@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gagan-bansal/osm-tile-list/issues"
+  },
+  "homepage": "https://github.com/gagan-bansal/osm-tile-list",
+  "devDependencies": {
+    "browserify": "^8.1.3",
+    "chai": "^1.10.0",
+    "exorcist": "^0.1.6",
+    "mocha": "^2.5.3",
+    "uglify-js": "^2.7.3"
+  },
+  "dependencies": {
+    "geojson-bbox": "0.0.0",
+    "geojson-extract-geometries": "0.0.2",
+    "greiner-hormann": "^1.3.1",
+    "point-in-polygon": "^1.0.1",
+    "turf-buffer": "^3.0.12"
+  }
+}
