@@ -8,13 +8,13 @@ npm install osm-tile-list -g
 
 ## usage
 ```
-Usage:osm-tile-list <geojson-file> [options]
+Usage:osm-tile-list.js <geojson-file> [options]
 
 Options:
-  --minZoom, -s     Min zoom to be considered for list              [default: 0]
-  --maxZoom, -e     Max zoom to be considered for list             [default: 18]
-  --tileBuffer, -b  Extra number of tiles around polygon            [default: 0]
-  --help, -h        Show help                                          [boolean]
+  -s, --minZoom     Min zoom to be considered for list     [number] [default: 0]
+  -e, --maxZoom     Max zoom to be considered for list    [number] [default: 18]
+  -b, --tileBuffer  Extra number of tiles around polygon   [number] [default: 0]
+  -h, --help        Show help                                          [boolean]
 ```
 Output like:
 ```
