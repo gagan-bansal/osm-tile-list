@@ -29,18 +29,6 @@ Output like:
 6/44/29.png
 6/44/30.png
 ``` 
-## developing
-Once you run
- 
-```npm isntall```
-
-then for running test 
-
-```npm run test```
-
-to create build
-
-```npm run build```
 
 ## license
 This project is licensed under the terms of the MIT license.
