@@ -26,7 +26,10 @@
     "url": "https://github.com/gagan-bansal/osm-tile-list/issues"
   },
   "homepage": "https://github.com/gagan-bansal/osm-tile-list",
-  "devDependencies": {},
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.0.2"
+  },
   "dependencies": {
     "geojson-bbox": "0.0.0",
     "geojson-extract-geometries": "0.0.2",

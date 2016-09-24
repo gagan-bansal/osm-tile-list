@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 var extract = require('geojson-extract-geometries')
-var inside = require('point-in-polygon')
+var pointInPolygon = require('point-in-polygon')
 var extent = require('geojson-bbox')
 var clipper = require('greiner-hormann')
 var buffer = require('turf-buffer')
@@ -27,6 +27,14 @@ var argv = require('yargs')
     type: 'number',
     default: 0
   })
+  .option('c', {
+    describe: 'Check only tile corners intersection with boundary polygon'
+      + ' otherwise check tile polygon to boundary polygon intersection'
+      + ' with JSTS',
+    alias: 'onlyCorners',
+    type: 'boolean',
+    default: false
+  })
   .help('h')
   .alias('h', 'help')
   .argv
@@ -50,17 +58,21 @@ fs.readFile(path.resolve(argv._[0]), function(err, data) {
       var right = long2tile(bbox[2], z)
       for (var x = left; x <= right; x++) {
         for (var y = top; y <= bottom; y++) {
-          var corners = tileCorners(z, x, y)
-          var anyPointIn = corners 
-            .every(function(pt) {
-              return inside(pt,poly.coordinates[0])
+          //get tile corners and center
+          var cornersWithCenter = tileCornersWithCenter(z, x, y)
+          var anyPointIn = cornersWithCenter 
+            .some(function(pt) {
+              return pointInPolygon(pt,poly.coordinates[0])
             })
           if (anyPointIn) {
             console.log([z,x,y].join('/') + '.png')
-          } else {
+          } 
+          if (!anyPointIn && !argv.onlyCorners) {
+            // if tile covers polygon (like river) points would not be inside
+            // but intersects with polygon
             var int = clipper.intersection(
               poly.coordinates[0].slice(0,-1),
-              corners)
+              cornersWithCenter.slice(0, cornersWithCenter.length - 1)) //remove ctr
             if (int) console.log([z,x,y].join('/') + '.png')
           }
         }
@@ -69,8 +81,8 @@ fs.readFile(path.resolve(argv._[0]), function(err, data) {
   })
 })
 
-// get tile corner points
-function tileCorners(z, x, y) {
+// get tile corner points and center
+function tileCornersWithCenter(z, x, y) {
   var top = tile2lat(y,z)
   var left = tile2long(x, z)
   var bottom = tile2lat(y+1, z)
@@ -79,7 +91,8 @@ function tileCorners(z, x, y) {
     [left, bottom],
     [right, bottom],
     [right, top],
-    [left, top]
+    [left, top],
+    [(left + right)/2, (bottom + top)/2]
   ]
 }
 
